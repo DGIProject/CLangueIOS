@@ -77,7 +77,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="12" kind="push" id="q6f-6a-Uzc"/>
+                                    <segue destination="12" kind="push" identifier="CoPush" id="q6f-6a-Uzc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vg4-sY-1hc">
@@ -216,31 +216,6 @@
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ClangueConectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueConectionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saisieReturn:"/>
-                <relationship kind="outlet" name="ErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="butonNext" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="connectBtuon" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordVar" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameVar" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ClangueRecorderDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueRecorderDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ClangueRecorderMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueRecorderMasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

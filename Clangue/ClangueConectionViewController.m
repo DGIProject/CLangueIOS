@@ -7,6 +7,7 @@
 //
 
 #import "ClangueConectionViewController.h"
+#import "ClangueRecorderMasterViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface ClangueConectionViewController ()
@@ -106,6 +107,11 @@
 {
     [sender resignFirstResponder];
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"CoPush"]) {
+        [[segue destinationViewController] setDetailItem:_usernameVar.text];
+    }
+}
 
 @end

@@ -25,7 +25,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _objects = [NSMutableArray array];
+    //Getting Json by Post method on the Api
+    NSString *post = [@"username=" stringByAppendingString:_detailItem];
+    
+    NSData *postData = [post dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:NO];
+    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init];
+    [urlRequest setURL:[NSURL URLWithString:@"http://clangue.net/api/IOS/getSubject.php"]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:postData];
+    
+    NSData *urlData;
+    NSURLResponse *response;
+    NSError *error;
+    urlData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    if(!urlData) {
+        NSLog(@"Connection Failed!");
+    }
+    NSString *ReturnedStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    //Parsing Json
+    
+    
+    
     [_objects addObject:@"test"];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -65,6 +87,11 @@
         NSDate *object = _objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:@"test"];
     }
+}
+- (void)setDetailItem:(id)newDetailItem
+{
+    _detailItem = newDetailItem;
+    NSLog(@"detail %@",_detailItem);
 }
 
 @end
