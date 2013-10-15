@@ -46,6 +46,9 @@
     NSString *ReturnedStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
     //Parsing Json
     
+    /*NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://clangue.net/api/IOS/getSubject.php"]];
+    NSLog(@"%@",jsonData);*/
+    NSLog(@"%@",ReturnedStr);
     
     
     [_objects addObject:@"test"];
