@@ -56,17 +56,24 @@
         //Get values from this dict using respective keys
         NSDictionary *msgs = [dit objectForKey:@"list"];
        // NSDictionary *msg = [msgs objectForKey:@"message"];
-        NSLog(@"%@",msgs);
+      //  NSLog(@"%@",msgs);
         NSNumber *countString = [dit objectForKey:@"count"];
-        NSLog(@"coujt %@",countString);
+      //  NSLog(@"coujt %@",countString);
        // int count = [countString intValue];
-
+        int i=0;
+        int numberOfloop = [countString intValue];
+        NSLog(@"%d",numberOfloop);
+        for (i;i<numberOfloop;i++)
+        {
             NSLog(@"entered In");
-            NSString *sujet  = [@"suj" stringByAppendingFormat:@"%d",0];
+            NSString *sujet  = [@"suj" stringByAppendingFormat:@"%d",i];
+            NSLog(@"%@",sujet);
             NSDictionary *itemSujet = [msgs objectForKey:sujet];
             NSString *nameSujet = [itemSujet objectForKey:@"name"];
             NSLog(@"%@",nameSujet);
-            [_objects addObject:nameSujet ];
+            [_objects addObject:nameSujet];
+        }
+            
         
         NSLog(@"log fin");
     }
@@ -91,7 +98,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _objects.count;
+    //return _objects.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
