@@ -28,7 +28,7 @@
     
     _objects = [NSMutableArray array];
     //Getting Json by Post method on the Api
-    NSString *post = [@"username=" stringByAppendingString:_detailItem];
+  /*  NSString *post = [@"username=" stringByAppendingString:_detailItem];
     
     NSData *postData = [post dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:NO];
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init];
@@ -43,12 +43,37 @@
     if(!urlData) {
         NSLog(@"Connection Failed!");
     }
-    NSString *ReturnedStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+    NSString *ReturnedStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];*/
     //Parsing Json
     
-    /*NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://clangue.net/api/IOS/getSubject.php"]];
-    NSLog(@"%@",jsonData);*/
-    NSLog(@"%@",ReturnedStr);
+
+    
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://clangue.net/api/IOS/getSubject.php"]];
+    //NSLog(@"%@",jsonData);
+    NSError* error;
+    NSDictionary *dit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    if (!error) {
+        //Get values from this dict using respective keys
+        NSDictionary *msgs = [dit objectForKey:@"list"];
+       // NSDictionary *msg = [msgs objectForKey:@"message"];
+        NSLog(@"%@",msgs);
+        NSNumber *countString = [dit objectForKey:@"count"];
+        NSLog(@"coujt %@",countString);
+       // int count = [countString intValue];
+
+            NSLog(@"entered In");
+            NSString *sujet  = [@"suj" stringByAppendingFormat:@"%d",0];
+            NSDictionary *itemSujet = [msgs objectForKey:sujet];
+            NSString *nameSujet = [itemSujet objectForKey:@"name"];
+            NSLog(@"%@",nameSujet);
+            [_objects addObject:nameSujet ];
+        
+        NSLog(@"log fin");
+    }
+    else {
+        //Your error message
+    }
+   // NSLog(@"%@",ReturnedStr);
     
     
     [_objects addObject:@"test"];
