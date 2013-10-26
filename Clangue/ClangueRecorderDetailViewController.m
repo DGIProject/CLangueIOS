@@ -16,16 +16,6 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
-    }
-}
-
 - (void)configureView
 {
     // Update the user interface for the detail item.
@@ -40,6 +30,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    //Call Api and Get the Json code
+    NSLog(@"ALLO");
+    NSLog(@"id: %@",_subjectId);
+   /* NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[@"http://clangue.net/api/IOS/getHomework.php?s=" stringByAppendingString:_detailDescriptionLabel.text]]];
+    //NSLog(@"%@",jsonData);
+    NSError* error;
+    NSDictionary *dit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    if (!error) {
+        //Get values from this dict using respective keys
+        NSDictionary *msgs = [dit objectForKey:@"data"];
+        NSNumber *ident = [dit objectForKey:@"id"];
+        NSLog(@"%@",ident);
+    }
+    else {
+        //Your error message
+    }*/
+
 }
 
 - (void)didReceiveMemoryWarning

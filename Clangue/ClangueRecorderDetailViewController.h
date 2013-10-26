@@ -11,6 +11,8 @@
 @interface ClangueRecorderDetailViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) id subjectId;
+@property (weak, nonatomic) IBOutlet UITextView *enonce;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

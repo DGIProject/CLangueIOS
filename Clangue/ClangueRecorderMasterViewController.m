@@ -12,6 +12,7 @@
 
 @interface ClangueRecorderMasterViewController () {
     NSMutableArray *_objects;
+    NSMutableArray *_idSubject;
 }
 @end
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     
     _objects = [NSMutableArray array];
+    _idSubject = [NSMutableArray array];
     //Getting Json by Post method on the Api
   /*  NSString *post = [@"username=" stringByAppendingString:_detailItem];
     
@@ -70,8 +72,11 @@
             NSLog(@"%@",sujet);
             NSDictionary *itemSujet = [msgs objectForKey:sujet];
             NSString *nameSujet = [itemSujet objectForKey:@"name"];
+            NSString *idsujet = [itemSujet objectForKey:@"subjectId"];
             NSLog(@"%@",nameSujet);
             [_objects addObject:nameSujet];
+            [_idSubject addObject:idsujet];
+            NSLog(@"sujert %@",idsujet);
         }
             
         
@@ -80,11 +85,8 @@
     else {
         //Your error message
     }
-   // NSLog(@"%@",ReturnedStr);
-    
-    
-    [_objects addObject:@"test"];
-	// Do any additional setup after loading the view, typically from a nib.
+    // NSLog(@"%@",ReturnedStr);
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,10 +123,21 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:@"test"];
+        NSDate *object2 = _idSubject[indexPath.row];
+        
+        ClangueRecorderDetailViewController *controler = (ClangueRecorderDetailViewController*)segue.destinationViewController;
+        controler.detailItem = object;
+        controler.subjectId = object2;
+        
+       // NSLog(@"Array contents: %@", _objects);
+      //  NSLog(@"Array contents 2 : %@", _idSubject);
+       // NSMutableArray *arrayObject;
+       // [arrayObject addObject:object];
+      //  [arrayObject addObject:object2];
+        //[[segue destinationViewController] setDetailItem:object2];
     }
 }
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(id)newDetailItem		
 {
     _detailItem = newDetailItem;
     NSLog(@"detail %@",_detailItem);
