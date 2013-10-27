@@ -33,7 +33,7 @@
     //Call Api and Get the Json code
     NSLog(@"ALLO");
     NSLog(@"id: %@",_subjectId);
-   /* NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[@"http://clangue.net/api/IOS/getHomework.php?s=" stringByAppendingString:_detailDescriptionLabel.text]]];
+    NSData *jsonData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[@"http://clangue.net/api/IOS/getHomework.php?s=" stringByAppendingString:_subjectId]]];
     //NSLog(@"%@",jsonData);
     NSError* error;
     NSDictionary *dit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
@@ -45,7 +45,7 @@
     }
     else {
         //Your error message
-    }*/
+    }
 
 }
 

@@ -13,6 +13,7 @@
 @interface ClangueRecorderMasterViewController () {
     NSMutableArray *_objects;
     NSMutableArray *_idSubject;
+    NSMutableArray *_DoneSubjectArray;
 }
 @end
 
@@ -29,6 +30,7 @@
     
     _objects = [NSMutableArray array];
     _idSubject = [NSMutableArray array];
+    _DoneSubjectArray = [NSMutableArray array];
     //Getting Json by Post method on the Api
   /*  NSString *post = [@"username=" stringByAppendingString:_detailItem];
     
@@ -73,9 +75,11 @@
             NSDictionary *itemSujet = [msgs objectForKey:sujet];
             NSString *nameSujet = [itemSujet objectForKey:@"name"];
             NSString *idsujet = [itemSujet objectForKey:@"subjectId"];
+            NSString *done = [itemSujet objectForKey:@"doneSubject"];
             NSLog(@"%@",nameSujet);
             [_objects addObject:nameSujet];
             [_idSubject addObject:idsujet];
+            [_DoneSubjectArray addObject:done];
             NSLog(@"sujert %@",idsujet);
         }
             
@@ -115,6 +119,13 @@
 
     NSDate *object = _objects[indexPath.row];
     cell.textLabel.text = [object description];
+    NSString *done = _DoneSubjectArray[indexPath.row];
+    NSLog(@"%@",done);
+    if ([done isEqualToString:@"1"])
+    {
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.userInteractionEnabled = FALSE;
+    }
     return cell;
 }
 
@@ -124,17 +135,21 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = _objects[indexPath.row];
         NSDate *object2 = _idSubject[indexPath.row];
-        
+      //  NSString *done = _DoneSubjectArray[indexPath.row];
         ClangueRecorderDetailViewController *controler = (ClangueRecorderDetailViewController*)segue.destinationViewController;
-        controler.detailItem = object;
-        controler.subjectId = object2;
+            controler.detailItem = object;
+            controler.subjectId = object2;
+            
+            // NSLog(@"Array contents: %@", _objects);
+            //  NSLog(@"Array contents 2 : %@", _idSubject);
+            // NSMutableArray *arrayObject;
+            // [arrayObject addObject:object];
+            //  [arrayObject addObject:object2];
+            //[[segue destinationViewController] setDetailItem:object2];
+            
         
-       // NSLog(@"Array contents: %@", _objects);
-      //  NSLog(@"Array contents 2 : %@", _idSubject);
-       // NSMutableArray *arrayObject;
-       // [arrayObject addObject:object];
-      //  [arrayObject addObject:object2];
-        //[[segue destinationViewController] setDetailItem:object2];
+        
+        
     }
 }
 - (void)setDetailItem:(id)newDetailItem		
