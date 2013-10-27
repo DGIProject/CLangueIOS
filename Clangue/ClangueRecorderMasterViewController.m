@@ -14,6 +14,7 @@
     NSMutableArray *_objects;
     NSMutableArray *_idSubject;
     NSMutableArray *_DoneSubjectArray;
+    NSMutableArray *_availableSubject;
 }
 @end
 
@@ -30,7 +31,9 @@
     
     _objects = [NSMutableArray array];
     _idSubject = [NSMutableArray array];
-    _DoneSubjectArray = [NSMutableArray array];
+    _DoneSubjectArray = [NSMutableArray array];    
+    _availableSubject = [NSMutableArray array];
+    
     //Getting Json by Post method on the Api
   /*  NSString *post = [@"username=" stringByAppendingString:_detailItem];
     
@@ -67,7 +70,7 @@
         int i=0;
         int numberOfloop = [countString intValue];
         NSLog(@"%d",numberOfloop);
-        for (i;i<numberOfloop;i++)
+        for (i=0;i<numberOfloop;i++)
         {
             NSLog(@"entered In");
             NSString *sujet  = [@"suj" stringByAppendingFormat:@"%d",i];
@@ -76,10 +79,12 @@
             NSString *nameSujet = [itemSujet objectForKey:@"name"];
             NSString *idsujet = [itemSujet objectForKey:@"subjectId"];
             NSString *done = [itemSujet objectForKey:@"doneSubject"];
+            NSString *availablea  = [itemSujet objectForKey:@"available"];
             NSLog(@"%@",nameSujet);
             [_objects addObject:nameSujet];
             [_idSubject addObject:idsujet];
             [_DoneSubjectArray addObject:done];
+            [_availableSubject addObject:availablea];
             NSLog(@"sujert %@",idsujet);
         }
             
@@ -120,11 +125,22 @@
     NSDate *object = _objects[indexPath.row];
     cell.textLabel.text = [object description];
     NSString *done = _DoneSubjectArray[indexPath.row];
-    NSLog(@"%@",done);
-    if ([done isEqualToString:@"1"])
+    NSString *availablea = [NSString stringWithFormat:@"%@",_availableSubject[indexPath.row]];
+    NSLog(@"available !! %@",availablea);
+   // NSLog(@"%@",done);
+    if ([availablea isEqualToString: @"1"])
     {
         cell.textLabel.textColor = [UIColor grayColor];
         cell.userInteractionEnabled = FALSE;
+    }
+    else
+    {
+        if ([done isEqualToString:@"1"])
+        {
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.userInteractionEnabled = FALSE;
+
+        }
     }
     return cell;
 }

@@ -40,8 +40,11 @@
     if (!error) {
         //Get values from this dict using respective keys
         NSDictionary *msgs = [dit objectForKey:@"data"];
-        NSNumber *ident = [dit objectForKey:@"id"];
+        NSNumber *ident = [msgs objectForKey:@"id"];
+        NSString *enonce = [NSString stringWithFormat:@"%@",[msgs objectForKey:@"enonce"]];
         NSLog(@"%@",ident);
+        NSLog(@"%@",enonce);
+        [_enonce loadHTMLString:enonce baseURL:nil];
     }
     else {
         //Your error message
