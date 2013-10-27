@@ -274,6 +274,11 @@
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="27" id="28"/>
                         <outlet property="enonce" destination="g6X-qR-tqO" id="66K-e8-EeJ"/>
+                        <outlet property="playAudio" destination="Il0-He-5yK" id="TFA-wy-Siu"/>
+                        <outlet property="record" destination="gaf-Ww-Mpa" id="g07-wm-nDQ"/>
+                        <outlet property="sendAction" destination="kKw-p7-rkg" id="PbM-5e-hcd"/>
+                        <outlet property="stopAudio" destination="tSa-kC-NIc" id="RjN-mW-tyP"/>
+                        <outlet property="timeText" destination="31m-3G-X5a" id="6Mr-pI-oXX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
@@ -298,6 +303,11 @@
             <relationships>
                 <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="enonce" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="playAudio" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="record" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sendAction" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stopAudio" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timeText" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ClangueRecorderMasterViewController" superclassName="UITableViewController">
