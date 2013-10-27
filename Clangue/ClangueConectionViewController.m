@@ -57,7 +57,7 @@
         
         NSString *post = [[@"username=" stringByAppendingString:_usernameVar.text] stringByAppendingString:[@"&password=" stringByAppendingString:passhach]];
         
-        NSLog(post);
+        NSLog(@"%@",post);
         NSData *postData = [post dataUsingEncoding:NSISOLatin1StringEncoding allowLossyConversion:NO];
         NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init];
         [urlRequest setURL:[NSURL URLWithString:@"http://clangue.net/api/IOS/loggin.php"]];
