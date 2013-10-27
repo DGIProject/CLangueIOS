@@ -214,6 +214,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="recordPauseTapped:" destination="21" eventType="touchUpInside" id="foH-8a-FOz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-He-5yK">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -224,6 +227,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playTapped:" destination="21" eventType="touchUpInside" id="Bp4-7c-7IM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-kC-NIc">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -234,6 +240,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="stopTapped:" destination="21" eventType="touchUpInside" id="pd3-rM-cy0"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31m-3G-X5a">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -274,10 +283,9 @@
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="27" id="28"/>
                         <outlet property="enonce" destination="g6X-qR-tqO" id="66K-e8-EeJ"/>
-                        <outlet property="playAudio" destination="Il0-He-5yK" id="TFA-wy-Siu"/>
-                        <outlet property="record" destination="gaf-Ww-Mpa" id="g07-wm-nDQ"/>
-                        <outlet property="sendAction" destination="kKw-p7-rkg" id="PbM-5e-hcd"/>
-                        <outlet property="stopAudio" destination="tSa-kC-NIc" id="RjN-mW-tyP"/>
+                        <outlet property="playButton" destination="Il0-He-5yK" id="PH8-Zp-P3X"/>
+                        <outlet property="recordPauseButton" destination="gaf-Ww-Mpa" id="p6e-4B-rVx"/>
+                        <outlet property="stopButton" destination="tSa-kC-NIc" id="Xkb-K5-e8G"/>
                         <outlet property="timeText" destination="31m-3G-X5a" id="6Mr-pI-oXX"/>
                     </connections>
                 </viewController>
@@ -290,6 +298,7 @@
         <class className="ClangueConectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueConectionViewController.h"/>
             <relationships>
+                <relationship kind="action" name="Onlick:"/>
                 <relationship kind="action" name="saisieReturn:"/>
                 <relationship kind="outlet" name="ErrorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="butonNext" candidateClass="UIButton"/>
@@ -301,12 +310,14 @@
         <class className="ClangueRecorderDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueRecorderDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="playTapped:"/>
+                <relationship kind="action" name="recordPauseTapped:"/>
+                <relationship kind="action" name="stopTapped:"/>
                 <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="enonce" candidateClass="UIWebView"/>
-                <relationship kind="outlet" name="playAudio" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="record" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sendAction" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopAudio" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordPauseButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="timeText" candidateClass="UILabel"/>
             </relationships>
         </class>
