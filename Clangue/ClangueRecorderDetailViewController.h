@@ -8,6 +8,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+#import "lame.h"
 
 @interface ClangueRecorderDetailViewController : UIViewController
 
@@ -24,6 +25,7 @@
 - (IBAction)stopTapped:(id)sender;
 - (IBAction)playTapped:(id)sender;
 
+ 
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

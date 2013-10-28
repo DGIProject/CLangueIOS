@@ -27,6 +27,7 @@
 		F0E603EC1805805C00C73F43 /* ClangueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E603EB1805805C00C73F43 /* ClangueTests.m */; };
 		F0E6040018059E9C00C73F43 /* bgApp.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E603FF18059E9C00C73F43 /* bgApp.png */; };
 		F0ED78341807101A00374EDC /* ClangueConectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0ED78331807101A00374EDC /* ClangueConectionViewController.m */; };
+		F0F367EF181DB8DC0005394F /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F367EE181DB8DC0005394F /* libmp3lame.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		F0E603FF18059E9C00C73F43 /* bgApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgApp.png; sourceTree = "<group>"; };
 		F0ED78321807101A00374EDC /* ClangueConectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClangueConectionViewController.h; sourceTree = "<group>"; };
 		F0ED78331807101A00374EDC /* ClangueConectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClangueConectionViewController.m; sourceTree = "<group>"; };
+		F0F367ED181DB8DC0005394F /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		F0F367EE181DB8DC0005394F /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 				F0E603B81805804B00C73F43 /* UIKit.framework in Frameworks */,
 				F0E603BA1805804B00C73F43 /* Foundation.framework in Frameworks */,
 				F0E603BC1805804B00C73F43 /* CoreGraphics.framework in Frameworks */,
+				F0F367EF181DB8DC0005394F /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0AEAAC5181DB7A900D1F174 /* lame */ = {
+			isa = PBXGroup;
+			children = (
+				F0F367ED181DB8DC0005394F /* lame.h */,
+				F0F367EE181DB8DC0005394F /* libmp3lame.a */,
+			);
+			name = lame;
+			sourceTree = "<group>";
+		};
 		F0E603AB1805804A00C73F43 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 		F0E603BD1805804B00C73F43 /* Clangue */ = {
 			isa = PBXGroup;
 			children = (
+				F0AEAAC5181DB7A900D1F174 /* lame */,
 				F0ED78321807101A00374EDC /* ClangueConectionViewController.h */,
 				F0ED78331807101A00374EDC /* ClangueConectionViewController.m */,
 				F0E603FF18059E9C00C73F43 /* bgApp.png */,
@@ -405,6 +419,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clangue/Clangue-Prefix.pch";
 				INFOPLIST_FILE = "Clangue/Clangue-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Downloads/iOSMp3Recorder-master/iOSMp3Recorder\"",
+					"\"$(SRCROOT)/Clangue\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,6 +435,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Clangue/Clangue-Prefix.pch";
 				INFOPLIST_FILE = "Clangue/Clangue-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Downloads/iOSMp3Recorder-master/iOSMp3Recorder\"",
+					"\"$(SRCROOT)/Clangue\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
