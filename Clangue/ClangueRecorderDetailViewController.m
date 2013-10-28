@@ -168,7 +168,7 @@
     
     UIAlertView *alert = [[UIAlertView alloc] init];
     [alert setTitle:@"Cofirmation"];
-    [alert setMessage:@"Êtes vous sur vouloir voulider votre sujet ? Apres ça il sera impossible de revenir en arrière."];
+    [alert setMessage:@"Êtes vous sur vouloir valider votre sujet ? Apres ça il sera impossible de revenir en arrière."];
     [alert setDelegate:self];
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
@@ -276,7 +276,7 @@
         NSLog(@"Send");
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         _alert = [[UIAlertView alloc] init];
-        [_alert setTitle:@"Envoi en court.."];
+        [_alert setTitle:@"Envoi en cours..."];
         
         UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         activity.frame = CGRectMake(140,
@@ -368,11 +368,34 @@
 {
     if (isTransfered)
     {
-        NSLog(@"Validation du sujet dans la base");
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 
+        [_alert dismissWithClickedButtonIndex:0 animated:YES];
+        
+        _alert = [[UIAlertView alloc] init];
+        [_alert setTitle:@"Enregistrement envoyé avec succè! Vous allez être redirigé vers la liste des sujets"];
+        [_alert addButtonWithTitle:@"OK"];
+        [_alert setCancelButtonIndex: 0];
+        [_alert show];
+        NSLog(@"Validation du sujet dans la base");
+        NSArray *viewControllers = [self.navigationController viewControllers];
+        ClangueRecorderMasterViewController *master = (ClangueRecorderMasterViewController *)[viewControllers objectAtIndex:viewControllers.count - 2];
+        master.detailItem = _username;
+        master.firstLoad = @"false";
+        [self.navigationController popViewControllerAnimated:YES];
     }
     else
     {
+        [_alert dismissWithClickedButtonIndex:0 animated:YES];
+        
+        _alert = [[UIAlertView alloc] init];
+        [_alert setTitle:@"Une erreur s'est produite. Vous allez être redirigé vers la liste des sujets"];
+        [_alert addButtonWithTitle:@"OK"];
+        [_alert setCancelButtonIndex: 0];
+        [_alert show];
+
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+
         NSLog(@"Error");
     }
 }

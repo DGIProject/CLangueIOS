@@ -29,7 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     _homeworkIdList = [NSMutableArray array];
     _objects = [NSMutableArray array];
     _idSubject = [NSMutableArray array];
@@ -155,6 +154,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = _objects[indexPath.row];
         NSDate *object2 = _idSubject[indexPath.row];
+        _firstLoad = @"false";
         NSString *selectedHomeworkId = _homeworkIdList[indexPath.row];
       //  NSString *done = _DoneSubjectArray[indexPath.row];
         ClangueRecorderDetailViewController *controler = (ClangueRecorderDetailViewController*)segue.destinationViewController;
@@ -162,7 +162,9 @@
             controler.subjectId = object2;
         controler.username = _detailItem;
         controler.homeworkId = selectedHomeworkId;
-            
+        
+        
+        
             // NSLog(@"Array contents: %@", _objects);
             //  NSLog(@"Array contents 2 : %@", _idSubject);
             // NSMutableArray *arrayObject;
@@ -179,6 +181,15 @@
 {
     _detailItem = newDetailItem;
     NSLog(@"detail %@",_detailItem);
+    _firstLoad = @"true";
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([_firstLoad isEqual:@"false"])
+    {
+       NSLog(@"OKReload !"); 
+    }
+    
 }
 
 @end

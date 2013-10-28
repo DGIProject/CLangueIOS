@@ -10,4 +10,5 @@
 
 @interface ClangueRecorderMasterViewController : UITableViewController
 @property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) id firstLoad;
 @end
