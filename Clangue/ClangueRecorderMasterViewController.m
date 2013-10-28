@@ -15,6 +15,7 @@
     NSMutableArray *_idSubject;
     NSMutableArray *_DoneSubjectArray;
     NSMutableArray *_availableSubject;
+    NSMutableArray * _homeworkIdList;
 }
 @end
 
@@ -29,6 +30,7 @@
 {
     [super viewDidLoad];
     
+    _homeworkIdList = [NSMutableArray array];
     _objects = [NSMutableArray array];
     _idSubject = [NSMutableArray array];
     _DoneSubjectArray = [NSMutableArray array];    
@@ -80,11 +82,13 @@
             NSString *idsujet = [itemSujet objectForKey:@"subjectId"];
             NSString *done = [itemSujet objectForKey:@"doneSubject"];
             NSString *availablea  = [itemSujet objectForKey:@"available"];
+            NSString *homeId = [itemSujet objectForKey:@"id"];
             NSLog(@"%@",nameSujet);
             [_objects addObject:nameSujet];
             [_idSubject addObject:idsujet];
             [_DoneSubjectArray addObject:done];
             [_availableSubject addObject:availablea];
+            [_homeworkIdList addObject:homeId];
             NSLog(@"sujert %@",idsujet);
         }
             
@@ -151,10 +155,13 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSDate *object = _objects[indexPath.row];
         NSDate *object2 = _idSubject[indexPath.row];
+        NSString *selectedHomeworkId = _homeworkIdList[indexPath.row];
       //  NSString *done = _DoneSubjectArray[indexPath.row];
         ClangueRecorderDetailViewController *controler = (ClangueRecorderDetailViewController*)segue.destinationViewController;
             controler.detailItem = object;
             controler.subjectId = object2;
+        controler.username = _detailItem;
+        controler.homeworkId = selectedHomeworkId;
             
             // NSLog(@"Array contents: %@", _objects);
             //  NSLog(@"Array contents 2 : %@", _idSubject);

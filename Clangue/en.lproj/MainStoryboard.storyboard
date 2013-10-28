@@ -206,8 +206,12 @@
                                 </constraints>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaf-Ww-Mpa">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="bYE-hG-xho"/>
+                                    <constraint firstAttribute="height" constant="39" id="nw3-Ez-1UV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="record">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -219,8 +223,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Il0-He-5yK">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ZOb-xS-rkc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="play">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -232,8 +239,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-kC-NIc">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="01J-9X-yUK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="stop">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -244,39 +254,59 @@
                                     <action selector="stopTapped:" destination="21" eventType="touchUpInside" id="pd3-rM-cy0"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31m-3G-X5a">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 minute(s) 0 seconde(s)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31m-3G-X5a">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-p7-rkg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="4p2-r6-cXj"/>
+                                    <constraint firstAttribute="width" constant="40" id="NxS-Xk-ZK2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" image="glyphicons_193_circle_ok.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="SendTapped:" destination="21" eventType="touchUpInside" id="uOI-QE-qDs"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="durée de l'enregistrement" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzB-Cc-8dH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="174" id="XDe-o4-90e"/>
+                                    <constraint firstAttribute="height" constant="21" id="fc7-oQ-Dvp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kKw-p7-rkg" firstAttribute="baseline" secondItem="31m-3G-X5a" secondAttribute="baseline" type="default" id="0Uo-9X-jh5"/>
-                            <constraint firstAttribute="bottom" secondItem="gaf-Ww-Mpa" secondAttribute="bottom" constant="105" id="1Mh-JS-ohq"/>
-                            <constraint firstItem="Il0-He-5yK" firstAttribute="baseline" secondItem="gaf-Ww-Mpa" secondAttribute="baseline" type="default" id="476-uO-b96"/>
+                            <constraint firstAttribute="bottom" secondItem="gaf-Ww-Mpa" secondAttribute="bottom" constant="100" id="5LL-gm-gii"/>
                             <constraint firstItem="27" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7ya-Li-cco"/>
-                            <constraint firstItem="tSa-kC-NIc" firstAttribute="baseline" secondItem="Il0-He-5yK" secondAttribute="baseline" type="default" id="BF9-mE-siH"/>
-                            <constraint firstAttribute="bottom" secondItem="kKw-p7-rkg" secondAttribute="bottom" constant="38" id="BXN-y5-NHb"/>
+                            <constraint firstItem="Il0-He-5yK" firstAttribute="top" secondItem="tSa-kC-NIc" secondAttribute="top" type="default" id="DHF-T4-YzD"/>
+                            <constraint firstItem="SzB-Cc-8dH" firstAttribute="centerX" secondItem="31m-3G-X5a" secondAttribute="centerX" type="default" id="J9k-S2-UmB"/>
                             <constraint firstItem="27" firstAttribute="top" secondItem="22" secondAttribute="top" constant="15" id="JhR-Pf-K3a"/>
+                            <constraint firstAttribute="bottom" secondItem="SzB-Cc-8dH" secondAttribute="bottom" constant="68" id="Jxd-3r-N4H"/>
                             <constraint firstItem="g6X-qR-tqO" firstAttribute="top" secondItem="22" secondAttribute="top" constant="65" id="KtU-LU-SUB"/>
-                            <constraint firstItem="gaf-Ww-Mpa" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WTZ-q4-15M"/>
-                            <constraint firstItem="31m-3G-X5a" firstAttribute="centerX" secondItem="gaf-Ww-Mpa" secondAttribute="centerX" type="default" id="XHr-gz-F2h"/>
+                            <constraint firstItem="31m-3G-X5a" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="36" id="NN5-5W-0Ay"/>
+                            <constraint firstItem="gaf-Ww-Mpa" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="45" id="SO8-Ui-5Pu"/>
+                            <constraint firstItem="tSa-kC-NIc" firstAttribute="leading" secondItem="Il0-He-5yK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Y6w-2Y-3Mc"/>
+                            <constraint firstAttribute="trailing" secondItem="kKw-p7-rkg" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dkB-ku-JWN"/>
                             <constraint firstAttribute="trailing" secondItem="27" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fBZ-yS-4XU"/>
-                            <constraint firstItem="Il0-He-5yK" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="112" id="iZl-hi-irf"/>
-                            <constraint firstItem="kKw-p7-rkg" firstAttribute="leading" secondItem="tSa-kC-NIc" secondAttribute="leading" type="default" id="qSN-20-7Is"/>
-                            <constraint firstAttribute="trailing" secondItem="kKw-p7-rkg" secondAttribute="trailing" constant="42" id="rLm-vd-N4k"/>
+                            <constraint firstAttribute="bottom" secondItem="kKw-p7-rkg" secondAttribute="bottom" constant="32" id="ive-P6-Qh0"/>
+                            <constraint firstItem="Il0-He-5yK" firstAttribute="leading" secondItem="gaf-Ww-Mpa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lO3-7O-ZpR"/>
+                            <constraint firstItem="Il0-He-5yK" firstAttribute="bottom" secondItem="gaf-Ww-Mpa" secondAttribute="bottom" type="default" id="m3S-dT-3K4"/>
+                            <constraint firstItem="tSa-kC-NIc" firstAttribute="bottom" secondItem="Il0-He-5yK" secondAttribute="bottom" type="default" id="sHN-Ak-bVY"/>
+                            <constraint firstItem="Il0-He-5yK" firstAttribute="top" secondItem="gaf-Ww-Mpa" secondAttribute="top" type="default" id="sOy-ev-iZx"/>
                             <constraint firstItem="27" firstAttribute="centerX" secondItem="g6X-qR-tqO" secondAttribute="centerX" type="default" id="tfO-Pz-SUI"/>
+                            <constraint firstItem="kKw-p7-rkg" firstAttribute="top" secondItem="31m-3G-X5a" secondAttribute="top" type="default" id="xgB-is-TGq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="26"/>
@@ -294,40 +324,9 @@
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ClangueConectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueConectionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="Onlick:"/>
-                <relationship kind="action" name="saisieReturn:"/>
-                <relationship kind="outlet" name="ErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="butonNext" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="connectBtuon" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordVar" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameVar" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ClangueRecorderDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueRecorderDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playTapped:"/>
-                <relationship kind="action" name="recordPauseTapped:"/>
-                <relationship kind="action" name="stopTapped:"/>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="enonce" candidateClass="UIWebView"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="recordPauseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="timeText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ClangueRecorderMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ClangueRecorderMasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
+    <resources>
+        <image name="glyphicons_193_circle_ok.png" width="26" height="26"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

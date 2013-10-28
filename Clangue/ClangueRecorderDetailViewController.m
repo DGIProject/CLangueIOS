@@ -16,7 +16,7 @@
     NSTimer* _timer;
     UIAlertView* _alert;
     NSURL* recordedFile;
-
+    BOOL isTransfered;
 }
 @end
 
@@ -58,6 +58,9 @@
         //Your error message
     }
     
+    [_playButton setImage:[UIImage imageNamed:@"glyphicons_173_play.png"] forState:UIControlStateNormal];
+    [_recordPauseButton setImage:[UIImage imageNamed:@"glyphicons_169_record"] forState:UIControlStateNormal];
+    [_stopButton setImage:[UIImage imageNamed:@"glyphicons_175_stop.png"] forState:UIControlStateNormal];
     // Disable Stop/Play button when application launches
     [_stopButton setEnabled:NO];
     [_playButton setEnabled:NO];
@@ -109,15 +112,10 @@
         
         // Start recording
         [recorder record];
-        [_recordPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
+        //[_recordPauseButton setTitle:@"Pause" forState:UIControlStateNormal];
         
-    } else {
-        
-        // Pause recording
-        [recorder pause];
-        [_recordPauseButton setTitle:@"Record" forState:UIControlStateNormal];
     }
-    
+    [_recordPauseButton setEnabled:NO];
     [_stopButton setEnabled:YES];
     [_playButton setEnabled:NO];
 }
@@ -166,10 +164,22 @@
     }
 }
 
+- (IBAction)SendTapped:(id)sender {
+    
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    [alert setTitle:@"Cofirmation"];
+    [alert setMessage:@"Êtes vous sur vouloir voulider votre sujet ? Apres ça il sera impossible de revenir en arrière."];
+    [alert setDelegate:self];
+    [alert addButtonWithTitle:@"Yes"];
+    [alert addButtonWithTitle:@"No"];
+    [alert show];    
+}
+
 #pragma mark - AVAudioRecorderDelegate
 
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
-    [_recordPauseButton setTitle:@"Record" forState:UIControlStateNormal];
+    //[_recordPauseButton setTitle:@"Record" forState:UIControlStateNormal];
+    [_recordPauseButton setImage:[UIImage imageNamed:@"glyphicons_169_record"] forState:UIControlStateNormal];
     [_stopButton setEnabled:NO];
     [_playButton setEnabled:YES];
 }
@@ -191,7 +201,7 @@
         int m = recorder.currentTime / 60;
         int s = ((int) recorder.currentTime) % 60;
         
-        _timeText.text = [NSString stringWithFormat:@"%.2d:%.2d", m, s];
+        _timeText.text = [NSString stringWithFormat:@"%d minute(s) %d sconde(s)", m, s];
     }
 }
 - (void) toMp3
@@ -258,6 +268,113 @@
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     NSLog(@"tetetetetetetet");
 
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        NSLog(@"Send");
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        _alert = [[UIAlertView alloc] init];
+        [_alert setTitle:@"Envoi en court.."];
+        
+        UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        activity.frame = CGRectMake(140,
+                                    80,
+                                    CGRectGetWidth(_alert.frame),
+                                    CGRectGetHeight(_alert.frame));
+        
+        
+        [_alert addSubview:activity];
+        [activity startAnimating];
+        
+        [_alert show];
+        
+        [NSThread detachNewThreadSelector:@selector(sendData) toTarget:self withObject:nil];
+
+    }
+    else if (buttonIndex == 1)
+    {
+        NSLog(@"cancel");
+    }
+}
+
+-(void)sendData
+{
+    NSString *mp3FileName = @"Mp3File";
+    mp3FileName = [mp3FileName stringByAppendingString:@".mp3"];
+    NSString *mp3FilePath = [[NSHomeDirectory() stringByAppendingFormat:@"/Documents/"] stringByAppendingPathComponent:mp3FileName];
+    
+    @try{
+        
+    
+    NSData *data = [NSData dataWithContentsOfFile:mp3FilePath];
+
+    if (data != nil)
+    {
+       NSString *filenames = [NSString stringWithFormat:@"TextLabel"];      //set name here
+        NSLog(@"%@", filenames);
+        
+        
+        NSString *partirl = [@"w=" stringByAppendingString:[_homeworkId stringByAppendingString:[@"&u=" stringByAppendingString:_username]]];
+        NSString *urlString =[ @"http://clangue.net/model/student/upload.php?" stringByAppendingString:partirl];
+        
+        NSLog(@"%@",urlString);
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setHTTPMethod:@"POST"];
+        
+        NSString *boundary = @"---------------------------14737809831466499882746641449";
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        NSMutableData *body = [NSMutableData data];
+        
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"filenames\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[filenames dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[@"Content-Disposition: form-data; name=\"userfile\"; filename=\"record.mp3\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[NSData dataWithData:data]];
+        [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        // setting the body of the post to the reqeust
+        [request setHTTPBody:body];
+        // now lets make the connection to the web
+        NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",returnString);
+        if ([returnString isEqual:@"success"])
+        {
+            isTransfered = YES;
+        }        
+        NSLog(@"finish");
+        }//end if
+    }//end try
+        @catch (NSException *exception) {
+            NSLog(@"%@",[exception description]);
+        }
+        @finally {
+            [self performSelectorOnMainThread:@selector(sendFinished)
+                                   withObject:nil
+                                waitUntilDone:YES];
+        }
+
+    
+}
+-(void)sendFinished
+{
+    if (isTransfered)
+    {
+        NSLog(@"Validation du sujet dans la base");
+
+    }
+    else
+    {
+        NSLog(@"Error");
+    }
 }
 
 @end

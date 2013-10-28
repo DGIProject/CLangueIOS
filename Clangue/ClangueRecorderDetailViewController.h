@@ -11,7 +11,8 @@
 #import "lame.h"
 
 @interface ClangueRecorderDetailViewController : UIViewController
-
+@property (strong, nonatomic) id homeworkId;
+@property (strong, nonatomic) id username;
 @property (strong, nonatomic) id detailItem;
 @property (strong, nonatomic) id subjectId;
 @property (weak, nonatomic) IBOutlet UIWebView *enonce;
@@ -25,6 +26,7 @@
 - (IBAction)stopTapped:(id)sender;
 - (IBAction)playTapped:(id)sender;
 
+- (IBAction)SendTapped:(id)sender;
  
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;

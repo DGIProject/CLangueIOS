@@ -28,6 +28,11 @@
 		F0E6040018059E9C00C73F43 /* bgApp.png in Resources */ = {isa = PBXBuildFile; fileRef = F0E603FF18059E9C00C73F43 /* bgApp.png */; };
 		F0ED78341807101A00374EDC /* ClangueConectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0ED78331807101A00374EDC /* ClangueConectionViewController.m */; };
 		F0F367EF181DB8DC0005394F /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F367EE181DB8DC0005394F /* libmp3lame.a */; };
+		F0F367F5181E6DB10005394F /* glyphicons_169_record.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F367F1181E6DB10005394F /* glyphicons_169_record.png */; };
+		F0F367F6181E6DB10005394F /* glyphicons_173_play.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F367F2181E6DB10005394F /* glyphicons_173_play.png */; };
+		F0F367F7181E6DB10005394F /* glyphicons_174_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F367F3181E6DB10005394F /* glyphicons_174_pause.png */; };
+		F0F367F8181E6DB10005394F /* glyphicons_175_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F367F4181E6DB10005394F /* glyphicons_175_stop.png */; };
+		F0F367FA181E6F460005394F /* glyphicons_193_circle_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F367F9181E6F460005394F /* glyphicons_193_circle_ok.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,11 @@
 		F0ED78331807101A00374EDC /* ClangueConectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClangueConectionViewController.m; sourceTree = "<group>"; };
 		F0F367ED181DB8DC0005394F /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		F0F367EE181DB8DC0005394F /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		F0F367F1181E6DB10005394F /* glyphicons_169_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_169_record.png; sourceTree = "<group>"; };
+		F0F367F2181E6DB10005394F /* glyphicons_173_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_173_play.png; sourceTree = "<group>"; };
+		F0F367F3181E6DB10005394F /* glyphicons_174_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_174_pause.png; sourceTree = "<group>"; };
+		F0F367F4181E6DB10005394F /* glyphicons_175_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_175_stop.png; sourceTree = "<group>"; };
+		F0F367F9181E6F460005394F /* glyphicons_193_circle_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glyphicons_193_circle_ok.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +152,7 @@
 		F0E603BD1805804B00C73F43 /* Clangue */ = {
 			isa = PBXGroup;
 			children = (
+				F0F367F0181E6D930005394F /* icons */,
 				F0AEAAC5181DB7A900D1F174 /* lame */,
 				F0ED78321807101A00374EDC /* ClangueConectionViewController.h */,
 				F0ED78331807101A00374EDC /* ClangueConectionViewController.m */,
@@ -189,6 +200,18 @@
 				F0E603E71805805C00C73F43 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0F367F0181E6D930005394F /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				F0F367F9181E6F460005394F /* glyphicons_193_circle_ok.png */,
+				F0F367F1181E6DB10005394F /* glyphicons_169_record.png */,
+				F0F367F2181E6DB10005394F /* glyphicons_173_play.png */,
+				F0F367F3181E6DB10005394F /* glyphicons_174_pause.png */,
+				F0F367F4181E6DB10005394F /* glyphicons_175_stop.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +292,11 @@
 				F0E603CE1805805100C73F43 /* Default-568h@2x.png in Resources */,
 				F0E603D11805805200C73F43 /* MainStoryboard.storyboard in Resources */,
 				F0E6040018059E9C00C73F43 /* bgApp.png in Resources */,
+				F0F367F5181E6DB10005394F /* glyphicons_169_record.png in Resources */,
+				F0F367F6181E6DB10005394F /* glyphicons_173_play.png in Resources */,
+				F0F367F7181E6DB10005394F /* glyphicons_174_pause.png in Resources */,
+				F0F367F8181E6DB10005394F /* glyphicons_175_stop.png in Resources */,
+				F0F367FA181E6F460005394F /* glyphicons_193_circle_ok.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
